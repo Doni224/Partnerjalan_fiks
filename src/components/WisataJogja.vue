@@ -135,17 +135,7 @@ export default {
   data() {
       return {
         selected: null,
-        kategoriOptions: [
-          { text: 'Semua' },
-          { text: 'Paket 1 Hari' },
-          { text: 'Paket 2 Hari' }
-        ],
-        hasilOptions: [
-          { text: '5 Paket' },
-          { text: '10 Paket' },
-          { text: '20 Paket' },
-          { text: '30 Paket' }
-        ],
+        
         id: 0,
         paket: [],
         pathPaket: this.$pathApi,
@@ -176,23 +166,23 @@ export default {
         console.log(e);
       }
     },
-    async searchWisata1() {
-      try {
-        const searchpaket = await axios.get(
-          this.$pathApi + "api/user/halamanutama/terbaru"+ this.$route.params.id +this.cari,
-          {
-            headers: {
-              "ngrok-skip-browser-warning": 1,
-            },
-          }
-        );
+  //   async searchWisata1() {
+  //     try {
+  //       const searchpaket = await axios.get(
+  //         this.$pathApi + "api/user/halamanutama/terbaru"+ this.$route.params.id +this.cari,
+  //         {
+  //           headers: {
+  //             "ngrok-skip-browser-warning": 1,
+  //           },
+  //         }
+  //       );
 
-        this.paket = searchpaket.data;
-      }  catch (e) {
-        console.log(e);
-      }
+  //       this.paket = searchpaket.data;
+  //     }  catch (e) {
+  //       console.log(e);
+  //     }
     
-  },
+  // },
   },
   mounted() {
     this.load();

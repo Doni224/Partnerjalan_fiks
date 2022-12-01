@@ -31,7 +31,10 @@
         <div class=" d-flex"  v-for="wisata in wisataTerbaru" :key="wisata.id">
           <div class="carousel col-md-12"> 
             <h3 class="carousel-text" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="50">paket wisata <br>{{wisata.namapaket}} </h3>
-            <button class="carousel-btn btn btn-primary" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="100">Lihat Detail</button>
+            <!-- <button class="carousel-btn btn btn-primary" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="100"
+            :to="{ name: 'pesanan', params: { id: wisata.id } }">Lihat Detail</button> -->
+            <b-button class="carousel-btn btn btn-primary" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="100"
+            :to="{ name: 'pesanan', params: { id: wisata.id } }">Pesan Paket</b-button>
             <!-- <WisataRekomend/> -->
             <div class="carousel-bg"></div>
             <img class="carousel-img" :src=" pathTerbaru + wisata.pathgambar" alt="about1">
@@ -56,7 +59,7 @@ export default {
 data(){
   return{
     wisataTerbaru:[],
-      pathTerbaru: this.$pathApi
+    pathTerbaru: this.$pathApi
   }
 },
 
@@ -66,9 +69,20 @@ methods: {
    },
    },
    props: ["wisata"],
+  // async load() {
+  //    axios .get(this.$pathApi + "api/user/paketuser/kota/" + this.$route.params.id, {
+  //          headers: {
+  //            "ngrok-skip-browser-warning": 1,
+  //          },
+  //        })
+
+  //       .then((response) => this.setFoto(response.data))
+  //      .catch((error) =>
+  //        console.log("gagal :", error));
+  //    },
  mounted() {
      axios
-       .get(this.pathTerbaru + "api/user/halamanutama/terbaru", {
+       .get(this.pathTerbaru + "api/user/halamanutama/terbaru" , {
          headers: {
            'ngrok-skip-browser-warning': 1
          }
